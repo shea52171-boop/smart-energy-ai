@@ -360,24 +360,26 @@ return [
     |
     */
 
-    'plugins' => [
+   'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true, // Ubah jadi true
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true, // Ubah jadi true
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
+                // ... (biarkan sisanya)
+            ],
+        ],
+        // ... (lewati yang lain)
+        'Chartjs' => [
+            'active' => true, // Ubah jadi true
+            'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'asset' => true, // Ubah jadi true
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
                 ],
             ],
         ],
