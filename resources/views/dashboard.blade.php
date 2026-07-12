@@ -275,30 +275,34 @@ Tidak ada rekomendasi.
 </style>
 @endsection
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 
 <script>
-const ctx = document.getElementById('myChart');
-
-new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [
-            @foreach($chartData as $data)
-                "{{ $data->tanggal }}",
-            @endforeach
-        ],
-        datasets: [{
-            label: 'Konsumsi Energi (kWh)',
-            data: [
-                @foreach($chartData as $data)
-                    {{ $data->total }},
-                @endforeach
-            ],
-            borderWidth: 2,
-            tension: 0.3,
-            fill: false
-        }]
+document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('myChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    @foreach($chartData as $data)
+                        "{{ $data->tanggal }}",
+                    @endforeach
+                ],
+                datasets: [{
+                    label: 'Konsumsi Energi (kWh)',
+                    data: [
+                        @foreach($chartData as $data)
+                            {{ $data->total }},
+                        @endforeach
+                    ],
+                    borderColor: 'rgb(75, 192, 192)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: false
+                }]
+            }
+        });
     }
 });
 </script>
