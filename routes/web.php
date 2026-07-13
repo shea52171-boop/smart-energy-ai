@@ -16,14 +16,11 @@ use App\Http\Controllers\SmartAlertController;
 |--------------------------------------------------------------------------
 */
 
-// Menampilkan form login AdminLTE
-Route::get('login', 'JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
+use App\Http\Controllers\Auth\LoginController;
 
-// Memproses data login
-Route::post('login', 'JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController@login');
-
-// Memproses logout
-Route::post('logout', 'JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
