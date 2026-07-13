@@ -30,7 +30,7 @@ class PredictionController extends Controller
             $status = 'Normal';
         }
 
-        // UBAH BARIS INI: Kirim variabel $today, $prediction, dan $status ke view
-        return view('machines.prediction', compact('today', 'prediction', 'status'));
+        
+       return view('prediction', compact('today', 'prediction', 'status'));
     }
 }
