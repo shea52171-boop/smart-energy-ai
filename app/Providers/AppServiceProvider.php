@@ -20,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \Artisan::call('view:clear');
+    \Artisan::call('config:clear');
+    \Artisan::call('route:clear');
+    
         // Paksa semua aset (CSS/JS) menggunakan HTTPS jika di Railway
         if (config('app.env') === 'production' || isset($_SERVER['HTTPS'])) {
             URL::forceScheme('https');

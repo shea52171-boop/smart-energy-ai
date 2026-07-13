@@ -31,6 +31,6 @@ class PredictionController extends Controller
         }
 
         
-       return view('prediction', compact('today', 'prediction', 'status'));
+        return view('machines.prediction', compact('today', 'prediction', 'status'));
     }
 }
