@@ -12,19 +12,18 @@ use App\Http\Controllers\SmartAlertController;
 
 /*
 |--------------------------------------------------------------------------
-| 1. RUTE AUTENTIKASI (MENGGUNAKAN CONTROLLER ADMINLTE)
+| 1. RUTE AUTENTIKASI (MENGGUNAKAN STRING NAMESPACE)
 |--------------------------------------------------------------------------
 */
 
 // Menampilkan form login AdminLTE
-Route::get('login', [\JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::get('login', 'JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
 
 // Memproses data login
-Route::post('login', [\JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::post('login', 'JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController@login');
 
 // Memproses logout
-Route::post('logout', [\JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-
+Route::post('logout', 'JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 /*
 |--------------------------------------------------------------------------
