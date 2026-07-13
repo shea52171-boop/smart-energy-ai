@@ -12,42 +12,18 @@ use App\Http\Controllers\SmartAlertController;
 
 /*
 |--------------------------------------------------------------------------
-| 1. RUTE AUTENTIKASI LANGSUNG (TANPA CONTROLLER CLASS)
+| 1. RUTE AUTENTIKASI (MENGGUNAKAN CONTROLLER ADMINLTE)
 |--------------------------------------------------------------------------
 */
 
 // Menampilkan form login AdminLTE
-Route::get('login', function () {
-    if (Auth::check()) {
-        return redirect('/');
-    }
-    return view('auth.login');
-})->name('login');
+Route::get('login', [\JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 
 // Memproses data login
-Route::post('login', function (Request $request) {
-    $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-    ]);
-
-    if (Auth::attempt($credentials, $request->remember)) {
-        $request->session()->regenerate();
-        return redirect()->intended('/');
-    }
-
-    return back()->withErrors([
-        'email' => 'Email atau password yang kamu masukkan salah.',
-    ])->onlyInput('email');
-});
+Route::post('login', [\JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController::class, 'login']);
 
 // Memproses logout
-Route::post('logout', function (Request $request) {
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-    return redirect('/login');
-})->name('logout');
+Route::post('logout', [\JeroenNoten\LaravelAdminLte\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 
 /*
